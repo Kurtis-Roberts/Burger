@@ -1,17 +1,27 @@
 var connection = require("../config/connection.js");
 
 
-function selectAll() {
 
-};
+function printQuestionMarks(num) {
+    var arr = [];
 
-function insertOne() {
+    for (var i = 0; i < num; i++) {
+        arr.push("?");
+    }
 
-};
+    return arr.toString();
+}
 
-function updateOne() {
+// Helper function for generating My SQL syntax
+function objToSql(ob) {
+    var arr = [];
 
-};
+    for (var key in ob) {
+        arr.push(key + "=" + ob[key]);
+    }
+
+    return arr.toString();
+}
 
 
 var orm = {
