@@ -6,10 +6,8 @@
       <div class="col s6">
         {{#each burgers}}
           {{#unless this.devoured}}
-            <div>
-              <form action="/burgers/{{this.id}}" method="POST">
-                <button type="submit" class='burgerAvailable'> {{this.burger_name}}</button>
-              </form>
+            <div data-id={{this.id}}>
+                <button type="submit" data-id={{this.id}} class='burgerAvailable'> {{this.burger_name}}</button>
             </div>
           {{/unless}}
         {{/each}}
@@ -18,7 +16,7 @@
       <div class="col s6">
         {{#each burgers}}
           {{#if this.devoured}}
-            <div class='burgerEaten'>
+            <div class='burgerEaten' data-id={{id}}>
               <div>
                 {{this.burger_name}}
               </div>

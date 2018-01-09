@@ -26,15 +26,19 @@ router.post("/burgers", function(req, res) {
 
 
 
-router.put("/burgers/:id", function(req, res) {
+router.put("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
 
     console.log("condition", condition);
 
     burger.update({
-        devoured: true
-    }, condition, function(data) {
-        res.redirect('/');
+        devoured: req.body.devoured
+    }, condition, function(result) {
+        if (result.changedRows == 0) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
     });
 });
 
